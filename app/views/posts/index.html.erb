@@ -8,7 +8,7 @@
     <span class="quiet">posted by <%= post.user.username %> at <%= post.created_at %> </span>
     <small>
      <span>
-        <p><%= "#{post.comments.size} comments" %></p>
+        <p><%= link_to("#{post.comments.size} comments", post_path(post)) %></p>
      </span>
     </small>
     </div>
