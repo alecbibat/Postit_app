@@ -12,7 +12,7 @@
     <p><%= post.description %></p>
     <span class="quiet">posted by <%= post.user.username %> at <%= post.created_at %> </span>
 
-    <%= link_to("edit", edit_post_path(params[:id])) %>
+    <%= link_to("edit", edit_post_path(post)) %>
 
 
 
