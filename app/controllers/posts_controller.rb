@@ -20,8 +20,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    binding.pry
-
+    @post.user = User.first
+ 
     if @post.save
       redirect_to posts_path
     else
@@ -38,6 +38,8 @@ class PostsController < ApplicationController
   def update
     # handle edit post form submit
   end
+
+  private
 
   def post_params
     params.require(:post).permit!
