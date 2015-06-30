@@ -32,12 +32,18 @@ class PostsController < ApplicationController
   end
 
   def edit
-    binding.pry
     @post = Post.find(params[:id])
     # display edit post form
   end
 
   def update
+    @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+      redirect_to posts_path
+    else
+      render edit_post_path
+    end
     # handle edit post form submit
   end
 

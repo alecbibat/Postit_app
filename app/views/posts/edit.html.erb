@@ -1,1 +1,16 @@
 This is the edit path!
+
+<div class="well">
+  <%= form_for @post do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <p><%= f.submit "Create Post", :class => "btn btn-primary" %></p>
+</div>
+<% end %>
