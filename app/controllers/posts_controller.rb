@@ -19,6 +19,15 @@ class PostsController < ApplicationController
   end
 
   def create
+    @post = Post.new(post_params)
+    binding.pry
+
+    if @post.save
+      redirect_to posts_path
+    else
+      render new_post_path
+    end
+
     # handle new post form submit
   end
 
@@ -28,6 +37,10 @@ class PostsController < ApplicationController
 
   def update
     # handle edit post form submit
+  end
+
+  def post_params
+    params.require(:post).permit!
   end
 
 
