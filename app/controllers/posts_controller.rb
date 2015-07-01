@@ -1,15 +1,12 @@
 class PostsController < ApplicationController
+
+before_action :set_post, only: [:show, :edit, :update]
+
   def index
     @post = Post.all
   end
 
   def show
-
-    @post = Post.find(params[:id])
-
-    # this should handle clicking on a post from the homepage
-
-    # this should display comments from the specific post it was displayed under
   end
 
   def new
@@ -32,13 +29,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
-    # display edit post form
   end
 
   def update
-    @post = Post.find(params[:id])
-
     if @post.update(post_params)
       redirect_to posts_path
     else
@@ -51,6 +44,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit!
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 
 
