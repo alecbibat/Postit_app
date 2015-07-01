@@ -1,10 +1,16 @@
 <p class="lead">All Categories</p>
 <hr/>
 
-<% @category.all do |category| %>
+<form action='/categories/new' method='get'>
+  <input type='submit' value='New Category' class="btn btn-primary">
+</form>
+
+
 
 <div class='well'>
   <ul>
-    <li><%= category %></li>
+    <% @category.each do |category| %>
+    <li><%= category.name %></li>
+    <% end %>
   </ul>
 </div>
