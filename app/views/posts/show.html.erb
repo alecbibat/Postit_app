@@ -1,26 +1,34 @@
 <% @post.categories.each do |category| %>
-  <span class="badge">=
+  <span class="badge">
     <%= category.name %>
   </span>
 <% end %>
 
 <h3><%= @post.title %></h3>
 
-<div class="well">
+<div class="span8 well">
 <p><%= @post.description %></p>
 </div>
+
+<p>
+<%= form_for [@post, @comment] do |f| %>
+<%= f.label :body %>
+<%= f.text_area :body %>
+<%= f.submit "Submit" %>
+<% end %>\
+</p>
 
 
 <% @post.comments.each do |comment| %>
 
 <div class="span8 well">
+<%= comment.body %>
 <p>
   <small>
     <quiet>
-      <%= comment.user.username %>
+      by <%= comment.user.username %> at <%= comment.created_at %>
     </quiet>
   </small>
 </p>
-<%= comment.body %>
 </div>
 <% end %>

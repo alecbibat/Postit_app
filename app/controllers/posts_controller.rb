@@ -7,6 +7,9 @@ before_action :set_post, only: [:show, :edit, :update]
   end
 
   def show
+    # in post.find, use strong params to find the right post
+    @post = Post.find(params[:id])
+    @comment = Comment.new()
   end
 
   def new
