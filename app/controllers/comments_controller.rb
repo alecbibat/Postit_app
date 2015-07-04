@@ -2,15 +2,17 @@ class CommentsController < ApplicationController
 
 def create
   # handle the submission of a comment here
-  binding.pry
   @post = Post.find(params[:post_id])
   @comment = @post.comments.build(comment_params)
   @comment.user = User.first()
 
+  binding.pry
+
   if @comment.save
-    redirect_to '/posts' # we were told not to do this!
+    flash[:notice] = "Your comment was saved."
+    redirect_to post_path(@post)
   else
-    render post_path
+    render "posts/show" # is this best practices? (how do we do this using post_path)
   end
 
 end

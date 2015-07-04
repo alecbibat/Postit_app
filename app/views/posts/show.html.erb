@@ -4,11 +4,25 @@
   </span>
 <% end %>
 
-<h3><%= @post.title %></h3>
+<p class="lead"><%= @post.title %></p>
 
 <div class="span8 well">
 <p><%= @post.description %></p>
 </div>
+
+
+<% if @comment.errors.any? %>
+  <div class="alert alert-error span8">
+    <strong>You must fix these errors</strong>
+    <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    </ul>
+  <% end %>
+  <% else %>
+  <% end %>
+  </div>
+
 
 <div class="span8">
 <strong>Leave a comment</strong>
@@ -19,7 +33,7 @@
 <% end %>
 </div>
 
-<strong>Comments:</strong>
+<hr/>
 
 <% @post.comments.each do |comment| %>
 
