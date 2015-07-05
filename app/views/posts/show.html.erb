@@ -42,7 +42,7 @@
 <p>
   <small>
     <quiet>
-      by <%= comment.user.username %> at <%= comment.created_at %>
+      by <%= comment.user.username %> at <%= datetime(comment.created_at) %>
     </quiet>
   </small>
 </p>
