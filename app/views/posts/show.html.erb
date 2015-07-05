@@ -10,19 +10,7 @@
 <p><%= @post.description %></p>
 </div>
 
-
-<% if @comment.errors.any? %>
-  <div class="alert alert-error span8">
-    <strong>You must fix these errors</strong>
-    <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    </ul>
-  <% end %>
-  <% else %>
-  <% end %>
-  </div>
-
+<%= render "shared/error", obj: @comment %>
 
 <div class="span8">
 <strong>Leave a comment</strong>
@@ -35,7 +23,7 @@
 
 <hr/>
 
-<% @post.comments.each do |comment| %>
+<% @post.comments.reload.each do |comment| %>
 
 <div class="span8 well">
 <%= comment.body %>

@@ -1,17 +1,6 @@
 Make a new category
 
-<div class="row">
-<% if @category.errors.any? %>
-  <div class="alert alert-error span8">
-    <strong>Fix these errors:</strong>
-  <% @category.errors.full_messages.each do |msg| %>
-  <ul>
-    <li><%= msg %></li>
-  </ul>
-  <% end %>
-  </div>
-<% end %>
-</div>
+<%= render "shared/error", obj: @category %>
 
 <%= form_for @category do |f| %>
 <%= f.label :name %>

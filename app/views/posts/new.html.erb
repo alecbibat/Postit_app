@@ -1,18 +1,6 @@
 <p class="lead">Make a new post</p>
 
-<div class="row">
-<% if @post.errors.any? %>
-  <div class="alert alert-error span8">
-    <strong>Fix these errors:</strong>
-  <% @post.errors.full_messages.each do |msg| %>
-  <ul>
-    <li><%= msg %></li>
-  </ul>
-  <% end %>
-  </div>
-<% end %>
-</div>
-
+<%= render "shared/error", obj: @post %>
 
 <div class="well">
   <%= form_for @post do |f| %>

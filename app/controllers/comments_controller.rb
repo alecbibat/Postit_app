@@ -6,8 +6,6 @@ def create
   @comment = @post.comments.build(comment_params)
   @comment.user = User.first()
 
-  binding.pry
-
   if @comment.save
     flash[:notice] = "Your comment was saved."
     redirect_to post_path(@post)
