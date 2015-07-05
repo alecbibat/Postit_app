@@ -1,7 +1,26 @@
-<p class="lead">All Categories &rarr; <%= @category.name %></p>
+<p class="lead"><%= link_to "All Categories", categories_path %> &rarr; <%= @category.name %></p>
 
 <% @post.each do |post| %>
-<ul>
-  <li><%= post %></li>
-</ul>
+ <div class="row">
+    <div class="span8 well">
+      <% post.categories.each do |category| %>
+      <span class="badge">
+        <%= category.name %>
+      </span>
+      <% end %>
+    <h3><%= link_to post.title, "http://#{post.url}" %></h3>
+    <p><%= post.description %></p>
+    <span class="quiet">posted by <%= post.user.username %> at <%= post.created_at %> </span>
+
+    <%= link_to("edit", edit_post_path(post)) %>
+
+
+
+    <small>
+     <span>
+        <p><%= link_to("#{post.comments.size} comments", post_path(post)) %></p>
+     </span>
+    </small>
+    </div>
+  </div>
 <% end %>
