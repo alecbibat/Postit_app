@@ -14,7 +14,6 @@ def create
     render :new
   end
 
-  binding.pry
 end
 
 def edit
