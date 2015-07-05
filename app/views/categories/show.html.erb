@@ -1,0 +1,7 @@
+<p class="lead">All Categories &rarr; <%= @category.name %></p>
+
+<% @post.each do |post| %>
+<ul>
+  <li><%= post %></li>
+</ul>
+<% end %>

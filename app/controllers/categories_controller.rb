@@ -12,6 +12,8 @@ def index
 end
 
 def show
+@category = Category.find(params[:id])
+@post = @category.posts.all
 end
 
 def new
@@ -19,7 +21,7 @@ def new
 end
 
 def create
-  @category = Category.new(post_params)
+  @category = Category.new(category_params)
 
   if @category.save
     redirect_to categories_path
@@ -36,7 +38,7 @@ end
 
 private
 
-  def post_params
+  def category_params
     params.require(:category).permit!
   end
 
