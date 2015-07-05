@@ -1,10 +1,10 @@
+<%= render "shared/header", title: @post.title %>
+
 <% @post.categories.each do |category| %>
   <span class="badge">
     <%= category.name %>
   </span>
 <% end %>
-
-<p class="lead"><%= @post.title %></p>
 
 <div class="span8 well">
 <p><%= @post.description %></p>
