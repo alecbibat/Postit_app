@@ -23,5 +23,12 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session.delete :user
+    if session[:user] == nil
+      flash[:notice] = "You've successfully logged out!"
+    else
+      flash[:error] = "You didn't log out!"
+      redirect_to root_path
+    end
   end
 end
