@@ -7,16 +7,18 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if User.find_by(username: (params[:username]))
-      @user = User.find_by(username: (params[:username]))
-      @user.authenticate(params[:password])
+    @user = User.find_by(username: (params[:username]))
+    if @user && @user.authenticate(params[:password])
       @user = session[:user]
       flash[:notice] = "You have successfully logged in!"
       redirect_to root_path
-
+      params.delete :username
+      params.delete :password
     else
       flash[:error] = "There's something wrong with your username or password."
-      render :create
+      params.delete :username
+      params.delete :password
+      render :new
     end
   end
 
