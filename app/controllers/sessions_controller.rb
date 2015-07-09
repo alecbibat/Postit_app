@@ -20,12 +20,14 @@ class SessionsController < ApplicationController
       params.delete :password
       render :new
     end
+    binding.pry
   end
 
   def destroy
-    session.delete :user
+    session.delete(:user)
     if session[:user] == nil
       flash[:notice] = "You've successfully logged out!"
+      redirect_to root_path
     else
       flash[:error] = "You didn't log out!"
       redirect_to root_path

@@ -3,7 +3,8 @@ PostitTemplate::Application.routes.draw do
 
   resources :users
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create]
+  delete 'logout' => 'sessions#destroy'
 
   # put sessions resources here
   # new, create, destroy
