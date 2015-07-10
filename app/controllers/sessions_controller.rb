@@ -12,8 +12,11 @@ class SessionsController < ApplicationController
       session[:user] = @user
       params.delete :username
       params.delete :password
+      current_user
+      binding.pry
       flash[:notice] = "You have successfully logged in as #{current_user.username}!"
-      redirect_to root_path
+      render root_path
+      binding.pry
     else
       flash[:error] = "There's something wrong with your username or password."
       params.delete :username

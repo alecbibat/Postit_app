@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+def show
+end
+
 def new
   @user = User.new()
 end
@@ -10,12 +13,10 @@ def create
   if @user.save
     @current_user = @user
     flash[:notice] = "You've successfully registered!"
-    binding.pry
     redirect_to posts_path
   else
     render :new
   end
-
 end
 
 def edit
