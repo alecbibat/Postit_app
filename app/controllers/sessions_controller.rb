@@ -9,18 +9,18 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: (params[:username]))
     if @user && @user.authenticate(params[:password])
-      @user = session[:user]
-      flash[:notice] = "You have successfully logged in!"
+      session[:user] = @user
+      flash[:notice] = "You have successfully logged in as #{@user.username}!"
       redirect_to root_path
       params.delete :username
       params.delete :password
+      binding.pry
     else
       flash[:error] = "There's something wrong with your username or password."
       params.delete :username
       params.delete :password
       render :new
     end
-    binding.pry
   end
 
   def destroy
