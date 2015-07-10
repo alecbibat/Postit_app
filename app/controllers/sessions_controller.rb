@@ -10,10 +10,10 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: (params[:username]))
     if @user && @user.authenticate(params[:password])
       session[:user] = @user
-      flash[:notice] = "You have successfully logged in as #{@user.username}!"
-      redirect_to root_path
       params.delete :username
       params.delete :password
+      flash[:notice] = "You have successfully logged in as #{current_user.username}!"
+      redirect_to root_path
       binding.pry
     else
       flash[:error] = "There's something wrong with your username or password."
