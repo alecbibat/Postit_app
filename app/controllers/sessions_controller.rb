@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
       params.delete :password
       flash[:notice] = "You have successfully logged in as #{current_user.username}!"
       redirect_to root_path
-      binding.pry
     else
       flash[:error] = "There's something wrong with your username or password."
       params.delete :username
