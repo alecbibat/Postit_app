@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       current_user
       binding.pry
       flash[:notice] = "You have successfully logged in as #{current_user.username}!"
-      render root_path
+      redirect_to root_path
       binding.pry
     else
       flash[:error] = "There's something wrong with your username or password."
