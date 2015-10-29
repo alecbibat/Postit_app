@@ -10,7 +10,7 @@
       <% end %>
     <h3><%= link_to post.title, fix_url(post.url) %></h3>
     <p><%= post.description %></p>
-    <span class="quiet">posted by <%= post.user.username %> at <%= datetime(post.created_at) %> </span>
+    <span class="quiet">posted by <%= link_to("#{post.user.username}", user_path(post.user)) %> at <%= datetime(post.created_at) %> </span>
 
     <%= link_to("edit", edit_post_path(post)) %>
 
